@@ -29,6 +29,21 @@ struct Person {
 impl TryFrom<&str> for Person {
     type Error = String;
     fn try_from(s: &str) -> Result<Self, Self::Error> {
+        if s.len() <= 0 {
+            Err("Empty".to_string())
+        } else {
+            let split_str : Vec<&str> = s.split(",").collect();
+            if split_str.len() < 2 {
+                Err("Not Enough".to_string())
+            } else {
+                if split_str[0].len() <= 0 {
+                    Err("Empty name".to_string())
+                } else {
+                    let age = split_str[1].to_string().parse::<usize>().unwrap();
+                    Ok(Person {name : split_str[0].to_string(), age})
+                }
+            }
+        }
     }
 }
 

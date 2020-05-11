@@ -4,11 +4,12 @@
 // I AM NOT DONE
 
 mod sausage_factory {
-    fn make_sausage() {
+    pub fn make_sausage() {
         println!("sausage!");
     }
 }
 
 fn main() {
+//    use sausage_factory;
     sausage_factory::make_sausage();
 }

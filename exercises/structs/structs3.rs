@@ -15,18 +15,20 @@ struct Package {
 impl Package {
     fn new(from: String, to: String, weight: f32) -> Package {
         if weight <= 0.0 {
-            // Something goes here...
+            panic!("weight should be positive");
         } else {
             return Package {from, to, weight};
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        true
     }
 
-    fn get_fees(&self, cost_per_kg: f32) -> ??? {
+    fn get_fees(&self, cost_per_kg: f32) -> f32 {
         // Something goes here...
+        cost_per_kg * self.weight
     }
 }
 
@@ -58,7 +60,7 @@ mod tests {
         let country_from = String::from("Spain");
         let country_to = String::from("Spain");
 
-        let country_fee = ???;
+        let country_fee: f32 = 8.0;
         
         let package = Package::new(country_from, country_to, 22.0);
         

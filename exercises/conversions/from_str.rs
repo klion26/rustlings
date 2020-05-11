@@ -3,6 +3,7 @@
 // on strings to generate an object of the implementor type.
 // You can read more about it at https://doc.rust-lang.org/std/str/trait.FromStr.html
 use std::str::FromStr;
+use std::string::ToString;
 
 #[derive(Debug)]
 struct Person {
@@ -22,6 +23,21 @@ struct Person {
 impl FromStr for Person {
     type Err = String;
     fn from_str(s: &str) -> Result<Person, Self::Err> {
+        if s.len() <= 0 {
+            Err("Empty".to_string())
+        } else {
+            let split_str : Vec<&str> = s.split(",").collect();
+            if split_str.len() < 2 {
+                Err("Not Enough".to_string())
+            } else {
+                if split_str[0].len() <= 0 {
+                    Err("Empty name".to_string())
+                } else {
+                    let age = split_str[1].to_string().parse::<usize>().unwrap();
+                    Ok(Person {name : split_str[0].to_string(), age})
+                }
+            }
+        }
     }
 }
 
