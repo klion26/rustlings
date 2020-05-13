@@ -6,7 +6,6 @@
 // Make the necessary code changes to support alphabetical report cards, thereby making the second
 // test pass.
 
-// I AM NOT DONE
 pub struct ReportCard {
     pub grade: Grade,
     pub student_name: String,

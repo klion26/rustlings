@@ -5,8 +5,6 @@
 // of "waiting..." and the program ends without timing out when running,
 // you've got it :)
 
-// I AM NOT DONE
-
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
@@ -14,7 +12,7 @@ use std::time::Duration;
 struct JobStatus {
     jobs_completed: u32,
 }
-
+// Be careful, make sure the thread is running parallelism!!!
 fn main() {
     let status = Arc::new(Mutex::new(JobStatus { jobs_completed: 0 }));
     let status_shared = status.clone();

@@ -7,8 +7,6 @@
 //         Try to ensure it returns a single string.
 // As always, there are hints if you execute `rustlings hint iterators2`!
 
-// I AM NOT DONE
-
 pub fn capitalize_first(input: &str) -> String {
     let mut c = input.chars();
     match c.next() {
@@ -27,15 +25,18 @@ pub fn capitalize_firstvec(vec: Vec<&str>) -> Vec<String> {
 pub fn capati_first_string(vec: Vec<&str>) -> String {
     let mut res = String::new();
     let mut first = true;
-    vec.iter().map(|node| {
-        if first {
-            res.push_str(&capitalize_first(node));
-            first = false;
-        } else {
-            res.push(' ');
-            res.push_str(&capitalize_first(node));
+    vec.iter().for_each(|node| {
+        if node.trim().len() > 0 {
+            if first {
+                res.push_str(&capitalize_first(node));
+                first = false;
+            } else {
+                res.push(' ');
+                res.push_str(&capitalize_first(node));
+            }
         }
-    });
+        });
+    println!("capti_first_string {}", first);
     res
 }
 
